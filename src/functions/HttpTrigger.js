@@ -11,8 +11,15 @@ app.http('HttpTrigger', {
     authLevel: 'anonymous',
     extraOutputs: [queueOutput],
     handler: async (request, context) => {
-        // 1. Extraire les données reçues
-        const body = await request.json();
+        let body;
+        try {
+            // 1. Extraire les données reçues
+            body = await request.json();
+        } catch (error) {
+            context.warn('Corps de requête invalide :', error.message);
+            return { status: 400, body: 'Le corps de la requête doit être du JSON valide' };
+        }
+
 
         // 2. Publier dans la queue (aucune autre logique)
         context.extraOutputs.set(queueOutput, body);
