@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "azure-functions-http-queue-table",
   "version": "1.0.0",
-  "description": "",
+  "description": "Azure Functions : une fonction HTTP publie dans une Queue Storage, une fonction Queue Trigger écrit dans une Table Storage.",
   "main": "src/functions/*.js",
   "scripts": {
     "start": "func start",
